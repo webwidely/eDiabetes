@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: 'Vercetti';
+    src: url('../fonts/Vercetti-Regular.woff2') format('truetype'); 
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Niconne';
+    src: url('../fonts/Niconne-Regular.ttf') format('truetype'); 
+    font-weight: normal;
+    font-style: normal;
+  }
