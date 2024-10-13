@@ -1,8 +1,67 @@
-import React from "react"
-import { Link } from "gatsby"
-import { FaPhone, FaEnvelope } from "react-icons/fa"
+import React, { useState } from "react";
+import { Link } from "gatsby";
+import { FaPhone, FaEnvelope } from "react-icons/fa";
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    whatsappNumber: "",
+    subject: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState("");
+
+  // Handle input change
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitMessage("");
+
+    // Validate form fields
+    const { fullName, email, whatsappNumber, subject, message } = formData;
+
+    if (!fullName || !email || !whatsappNumber || !subject || !message) {
+      setSubmitMessage("Please fill out all fields.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      const response = await fetch("https://panelphysiciancalgary.ca/js/ediabetes-form-handler.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: new URLSearchParams(formData).toString(),
+      });
+
+      if (response.ok) {
+        setSubmitMessage("Your message has been sent successfully!");
+        setFormData({
+          fullName: "",
+          email: "",
+          whatsappNumber: "",
+          subject: "",
+          message: "",
+        });
+      } else {
+        setSubmitMessage("There was an error sending your message. Please try again.");
+      }
+    } catch (error) {
+      setSubmitMessage("Network error. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <>
       <div
@@ -66,7 +125,7 @@ const Contact = () => {
 
             {/* Contact Form Section */}
             <div className="contactform bg-white p-6 md:p-8 rounded-lg w-full lg:w-2/3 shadow-lg">
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label
@@ -79,8 +138,11 @@ const Contact = () => {
                       type="text"
                       name="fullName"
                       id="fullName"
+                      value={formData.fullName}
+                      onChange={handleChange}
                       className="mt-1 block w-full pl-3 pr-3 py-2 border border-primary rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
                       placeholder="Enter your full name"
+                      required
                     />
                   </div>
                   <div>
@@ -94,8 +156,11 @@ const Contact = () => {
                       type="email"
                       name="email"
                       id="email"
+                      value={formData.email}
+                      onChange={handleChange}
                       className="mt-1 block w-full pl-3 pr-3 py-2 border border-primary rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
                       placeholder="Enter your email address"
+                      required
                     />
                   </div>
                 </div>
@@ -112,8 +177,11 @@ const Contact = () => {
                       type="text"
                       name="whatsappNumber"
                       id="whatsappNumber"
+                      value={formData.whatsappNumber}
+                      onChange={handleChange}
                       className="mt-1 block w-full pl-3 pr-3 py-2 border border-primary rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
                       placeholder="Enter your WhatsApp number"
+                      required
                     />
                   </div>
                   <div>
@@ -127,8 +195,11 @@ const Contact = () => {
                       type="text"
                       name="subject"
                       id="subject"
+                      value={formData.subject}
+                      onChange={handleChange}
                       className="mt-1 block w-full pl-3 pr-3 py-2 border border-primary rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
                       placeholder="Enter the subject"
+                      required
                     />
                   </div>
                 </div>
@@ -144,16 +215,27 @@ const Contact = () => {
                     id="message"
                     name="message"
                     rows={4}
+                    value={formData.message}
+                    onChange={handleChange}
                     className="mt-1 block w-full pl-3 pr-3 py-2 border border-primary rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
                     placeholder="Enter your message"
+                    required
                   ></textarea>
                 </div>
 
+                {/* Submission Message */}
+                {submitMessage && (
+                  <div className="text-center text-red-600 mt-4">
+                    {submitMessage}
+                  </div>
+                )}
+
                 <button
                   type="submit"
-                  className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+                  className={`w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary ${isSubmitting ? "opacity-50 cursor-not-allowed" : ""}`}
+                  disabled={isSubmitting}
                 >
-                  Send Message
+                  {isSubmitting ? "Sending..." : "Send Message"}
                 </button>
               </form>
             </div>
@@ -161,7 +243,7 @@ const Contact = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;
