@@ -5,7 +5,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import Lenis from '@studio-freight/lenis'; // Import Lenis
 
 const menuItems = [
-  { name: "Home", link: "/" },
+  { name: "Home", link: "#hero" },
   { name: "Why Telehealth", link: "#why-telehealth" },
   { name: "Services", link: "#services" },
   { name: "How It Works", link: "#how-it-works" },
@@ -124,7 +124,7 @@ const Header = ({ siteTitle }) => {
               <li key={index}>
                 <Link
                   to={menuItem.link}
-                  className={`text-dark hover:text-primary font-heading ${index === menuItems.length - 1 ? "text-white px-8 py-2 rounded-lg bg-primary uppercase" : ""}`}
+                  className={`text-dark hover:text-primary font-heading ${index === menuItems.length - 1 ? "text-white hover:!text-white px-8 py-2 rounded-lg bg-primary uppercase" : ""}`}
                   onClick={(e) => handleMenuItemClick(e, menuItem.link)}
                 >
                   {menuItem.name}
