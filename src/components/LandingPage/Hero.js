@@ -40,7 +40,7 @@ const Hero = () => {
         <h1 className="text-5xl font-heading text-primary leading-tight -mt-4">Comprehensive Diabetes Care from the Comfort of Your Home</h1>
         <p className="font-body max-w-sm">Our Diabetes Care Telehealth services provide personalized care, education, and resources—all from the convenience of your own home. Schedule your first virtual appointment today!</p>
         <button className=" max-w-fit px-8 py-4 rounded-lg bg-gradient-to-tl hover:bg-gradient-to-tr transition-all from-primary to-secondary text-white uppercase">
-          <Link to="#contact">Schedule Your Appointment Today</Link>
+          <Link to="https://www.halaxy.com/profile/dr-talib-muhammed/other/1555241" target="_blank">Schedule Your Appointment Today</Link>
         </button>
     </div>
     <div className="imgdiv max-w-4xl lg:w-1/2">

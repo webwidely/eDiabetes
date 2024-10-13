@@ -32,7 +32,7 @@ const Contact = () => {
                 </p>
               </div>
               <button className="w-full lg:w-auto px-8 py-4 rounded-lg bg-gradient-to-tl from-primary to-secondary hover:bg-gradient-to-tr transition-all text-white uppercase font-semibold shadow-md hover:shadow-lg">
-                <Link to="#contact">Schedule Your Appointment Today</Link>
+                <Link to="https://www.halaxy.com/profile/dr-talib-muhammed/other/1555241" target="_blank">Schedule Your Appointment Today</Link>
               </button>
             </div>
 

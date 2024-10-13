@@ -62,7 +62,7 @@ const Footer = () => {
             ))}
           </nav>
           <button className="px-8 py-4 rounded-lg bg-gradient-to-tl hover:bg-gradient-to-tr transition-all from-primary to-secondary text-white uppercase">
-            <Link to="#contact" onClick={(e) => handleMenuItemClick(e, "#contact")}>
+            <Link to="https://www.halaxy.com/profile/dr-talib-muhammed/other/1555241" target="_blank">
               Schedule Your Appointment Today
             </Link>
           </button>
