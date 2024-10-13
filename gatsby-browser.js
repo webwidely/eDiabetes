@@ -10,6 +10,7 @@ import "./src/styles/global.css"
 // gatsby-browser.js
 import Lenis from "@studio-freight/lenis"
 
+
 let lenis
 
 export const onInitialClientRender = () => {

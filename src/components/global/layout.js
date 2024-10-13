@@ -3,6 +3,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import Footer from "./Footer"
 
 import Header from "./header"
+import GoogleTranslate from "./GoogleTranslate"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -20,6 +21,9 @@ const Layout = ({ children }) => {
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
       <div>
         <main>{children}</main>
+      </div>
+      <div className=" fixed bottom-2 left-2">
+        <GoogleTranslate/>
       </div>
       <Footer />
     </>
