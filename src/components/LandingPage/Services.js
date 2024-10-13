@@ -83,11 +83,11 @@ const OurTelehealthDiabetesServices = () => {
       <div className="overlay bg-primary/85 absolute w-full h-full z-10"></div> {/* Ensure this has a z-index lower than the heading */}
   
       <div className="py-[5%] relative z-20"> {/* Add z-20 to bring it above the overlay */}
-        <h2 className="text-5xl font-heading font-bold max-w-lg text-white leading-snug m-auto text-center mb-[5%] relative z-20">
-          Our Telehealth Diabetes Services
-        </h2>
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold max-w-lg text-white leading-snug m-auto text-center mb-12 relative z-20">
+            Our Telehealth Diabetes Services
+          </h2>
   
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-20 max-w-5xl m-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10 lg:gap-20 max-w-5xl px-4 m-auto">
           {services.map((service, index) => (
             <div
               key={index}
