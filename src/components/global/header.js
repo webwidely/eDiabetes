@@ -2,13 +2,14 @@ import * as React from "react";
 import { Link, useStaticQuery, graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { FaBars, FaTimes } from "react-icons/fa";
+import Lenis from '@studio-freight/lenis'; // Import Lenis
 
 const menuItems = [
   { name: "Home", link: "/" },
   { name: "Why Telehealth", link: "#why-telehealth" },
   { name: "Services", link: "#services" },
   { name: "How It Works", link: "#how-it-works" },
-  { name: "Contact", link: "#contact" }, // This will be the button
+  { name: "Contact", link: "#contact" },
 ];
 
 const Header = ({ siteTitle }) => {
@@ -29,6 +30,27 @@ const Header = ({ siteTitle }) => {
 
   const logoImage = getImage(data.file);
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const lenisRef = React.useRef(null); // Reference for Lenis
+
+  // Initialize Lenis
+  React.useEffect(() => {
+    lenisRef.current = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smooth: true,
+    });
+
+    function raf(time) {
+      lenisRef.current.raf(time);
+      requestAnimationFrame(raf);
+    }
+    
+    requestAnimationFrame(raf);
+    
+    return () => {
+      lenisRef.current = null; // Cleanup
+    };
+  }, []);
 
   // Close menu when clicking outside of it
   const menuRef = React.useRef();
@@ -49,8 +71,15 @@ const Header = ({ siteTitle }) => {
   }, [isMenuOpen]);
 
   // Close menu on link click and enable smooth scrolling
-  const handleMenuItemClick = () => {
-    setIsMenuOpen(false);
+  const handleMenuItemClick = (event, targetId) => {
+    event.preventDefault(); // Prevent the default anchor link behavior
+
+    const targetElement = document.getElementById(targetId.substring(1)); // Get the target section
+    if (targetElement) {
+      lenisRef.current.scrollTo(targetElement.offsetTop); // Use Lenis to scroll smoothly
+    }
+
+    setIsMenuOpen(false); // Close the menu
   };
 
   return (
@@ -62,7 +91,7 @@ const Header = ({ siteTitle }) => {
               <GatsbyImage
                 image={logoImage}
                 alt="Logo"
-                className=" w-[283px] h-auto"
+                className="w-[283px] h-auto"
               />
             ) : (
               <img
@@ -89,29 +118,17 @@ const Header = ({ siteTitle }) => {
               isMenuOpen
                 ? "translate-x-0 opacity-100"
                 : "-translate-x-full opacity-0"
-            } bg-white  w-3/4 lg:w-auto pt-10 lg:pt-0 px-10 lg:px-0`}
+            } bg-white w-3/4 lg:w-auto pt-10 lg:pt-0 px-10 lg:px-0`}
           >
             {menuItems.map((menuItem, index) => (
               <li key={index}>
-                {index < menuItems.length - 1 ? (
-                  <Link
-                    to={menuItem.link}
-                    className="text-dark hover:text-secondary font-heading"
-                    onClick={handleMenuItemClick}
-                    style={{ scrollBehavior: "smooth" }}
-                  >
-                    {menuItem.name}
-                  </Link>
-                ) : (
-                  <Link
-                    to={menuItem.link}
-                    className="text-white px-8 py-2 rounded-lg bg-primary uppercase"
-                    onClick={handleMenuItemClick}
-                    style={{ scrollBehavior: "smooth" }}
-                  >
-                    {menuItem.name}
-                  </Link>
-                )}
+                <Link
+                  to={menuItem.link}
+                  className={`text-dark hover:text-primary font-heading ${index === menuItems.length - 1 ? "text-white px-8 py-2 rounded-lg bg-primary uppercase" : ""}`}
+                  onClick={(e) => handleMenuItemClick(e, menuItem.link)}
+                >
+                  {menuItem.name}
+                </Link>
               </li>
             ))}
           </ul>
