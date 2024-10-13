@@ -8,14 +8,13 @@ import Services from "../components/LandingPage/Services"
 import HowItWorks from "../components/LandingPage/HowItWorks"
 import Contact from "../components/LandingPage/Contact"
 
-
 const IndexPage = () => (
   <Layout>
-   <Hero/>
-   <WhyTelehealth/>
-   <Services/>
-   <HowItWorks/>
-   <Contact/>
+    <Hero />
+    <WhyTelehealth />
+    <Services />
+    <HowItWorks />
+    <Contact />
   </Layout>
 )
 

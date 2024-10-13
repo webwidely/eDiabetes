@@ -1,8 +1,8 @@
-import * as React from "react";
-import { Link, useStaticQuery, graphql } from "gatsby";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import { FaBars, FaTimes } from "react-icons/fa";
-import Lenis from '@studio-freight/lenis'; // Import Lenis
+import * as React from "react"
+import { Link, useStaticQuery, graphql } from "gatsby"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { FaBars, FaTimes } from "react-icons/fa"
+import Lenis from "@studio-freight/lenis" // Import Lenis
 
 const menuItems = [
   { name: "Home", link: "#hero" },
@@ -10,7 +10,7 @@ const menuItems = [
   { name: "Services", link: "#services" },
   { name: "How It Works", link: "#how-it-works" },
   { name: "Contact", link: "#contact" },
-];
+]
 
 const Header = ({ siteTitle }) => {
   const data = useStaticQuery(graphql`
@@ -26,61 +26,61 @@ const Header = ({ siteTitle }) => {
         }
       }
     }
-  `);
+  `)
 
-  const logoImage = getImage(data.file);
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-  const lenisRef = React.useRef(null); // Reference for Lenis
+  const logoImage = getImage(data.file)
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false)
+  const lenisRef = React.useRef(null) // Reference for Lenis
 
   // Initialize Lenis
   React.useEffect(() => {
     lenisRef.current = new Lenis({
       duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smooth: true,
-    });
+    })
 
     function raf(time) {
-      lenisRef.current.raf(time);
-      requestAnimationFrame(raf);
+      lenisRef.current.raf(time)
+      requestAnimationFrame(raf)
     }
-    
-    requestAnimationFrame(raf);
-    
+
+    requestAnimationFrame(raf)
+
     return () => {
-      lenisRef.current = null; // Cleanup
-    };
-  }, []);
+      lenisRef.current = null // Cleanup
+    }
+  }, [])
 
   // Close menu when clicking outside of it
-  const menuRef = React.useRef();
+  const menuRef = React.useRef()
   React.useEffect(() => {
-    const handleOutsideClick = (event) => {
+    const handleOutsideClick = event => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
-        setIsMenuOpen(false);
+        setIsMenuOpen(false)
       }
-    };
+    }
     if (isMenuOpen) {
-      document.addEventListener("mousedown", handleOutsideClick);
+      document.addEventListener("mousedown", handleOutsideClick)
     } else {
-      document.removeEventListener("mousedown", handleOutsideClick);
+      document.removeEventListener("mousedown", handleOutsideClick)
     }
     return () => {
-      document.removeEventListener("mousedown", handleOutsideClick);
-    };
-  }, [isMenuOpen]);
+      document.removeEventListener("mousedown", handleOutsideClick)
+    }
+  }, [isMenuOpen])
 
   // Close menu on link click and enable smooth scrolling
   const handleMenuItemClick = (event, targetId) => {
-    event.preventDefault(); // Prevent the default anchor link behavior
+    event.preventDefault() // Prevent the default anchor link behavior
 
-    const targetElement = document.getElementById(targetId.substring(1)); // Get the target section
+    const targetElement = document.getElementById(targetId.substring(1)) // Get the target section
     if (targetElement) {
-      lenisRef.current.scrollTo(targetElement.offsetTop); // Use Lenis to scroll smoothly
+      lenisRef.current.scrollTo(targetElement.offsetTop) // Use Lenis to scroll smoothly
     }
 
-    setIsMenuOpen(false); // Close the menu
-  };
+    setIsMenuOpen(false) // Close the menu
+  }
 
   return (
     <header className="bg-white shadow-md absolute top-0 right-0 left-0 z-50">
@@ -124,8 +124,12 @@ const Header = ({ siteTitle }) => {
               <li key={index}>
                 <Link
                   to={menuItem.link}
-                  className={`text-dark hover:text-primary font-heading ${index === menuItems.length - 1 ? "text-white hover:!text-white px-8 py-2 rounded-lg bg-primary uppercase" : ""}`}
-                  onClick={(e) => handleMenuItemClick(e, menuItem.link)}
+                  className={`text-dark hover:text-primary font-heading ${
+                    index === menuItems.length - 1
+                      ? "text-white hover:!text-white px-8 py-2 rounded-lg bg-primary uppercase"
+                      : ""
+                  }`}
+                  onClick={e => handleMenuItemClick(e, menuItem.link)}
                 >
                   {menuItem.name}
                 </Link>
@@ -135,7 +139,7 @@ const Header = ({ siteTitle }) => {
         </div>
       </nav>
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
