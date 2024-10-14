@@ -22,7 +22,7 @@ const Layout = ({ children }) => {
       <div>
         <main>{children}</main>
       </div>
-      <div className=" fixed bottom-2 left-2">
+      <div className=" fixed bottom-2 left-2 z-50">
         <GoogleTranslate/>
       </div>
       <Footer />

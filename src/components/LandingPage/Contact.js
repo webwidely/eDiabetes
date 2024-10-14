@@ -66,7 +66,7 @@ const Contact = () => {
 
             {/* Contact Form Section */}
             <div className="contactform bg-white p-6 md:p-8 rounded-lg w-full lg:w-2/3 shadow-lg">
-              <form className="space-y-6">
+              <form className="space-y-6" action="./FormSubmit.php" method="post">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label

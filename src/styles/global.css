@@ -15,3 +15,12 @@
   font-weight: normal;
   font-style: normal;
 }
+
+
+.goog-te-gadget{
+  color: white !important;
+}
+
+.goog-te-combo{
+  @apply !text-dark;
+}

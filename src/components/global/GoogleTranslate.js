@@ -38,7 +38,7 @@ const GoogleTranslate = () => {
   return (
     <div
       id="google_translate_element"
-      className="flex flex-col justify-center items-center mx-auto p-4 bg-[#E7EDED] text-dark rounded-lg shadow-md z-50"
+      className="flex flex-col justify-center items-center mx-auto p-4 bg-red-600 text-dark rounded-lg shadow-md z-50"
     >
    
     </div>
