@@ -4,6 +4,7 @@ import Footer from "./Footer"
 
 import Header from "./header"
 import GoogleTranslate from "./GoogleTranslate"
+import WhatsApp from "./WhatsApp"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -25,6 +26,7 @@ const Layout = ({ children }) => {
       <div className=" fixed bottom-2 left-2 z-50">
         <GoogleTranslate/>
       </div>
+      <WhatsApp  />
       <Footer />
     </>
   )
