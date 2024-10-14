@@ -91,7 +91,7 @@ const Header = ({ siteTitle }) => {
               <GatsbyImage
                 image={logoImage}
                 alt="Logo"
-                className="w-[283px] h-auto"
+                className=" w-[190px]  md:w-[283px] h-auto"
               />
             ) : (
               <img

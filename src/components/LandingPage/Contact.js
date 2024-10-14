@@ -1,8 +1,57 @@
-import React from "react"
-import { Link } from "gatsby"
-import { FaPhone, FaEnvelope } from "react-icons/fa"
+import React, { useState } from "react";
+import { Link } from "gatsby";
+import { FaPhone, FaEnvelope } from "react-icons/fa";
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    whatsappNumber: "",
+    subject: "",
+    message: "",
+  });
+
+  const [formStatus, setFormStatus] = useState(null); // success or error message
+  const [loading, setLoading] = useState(false); // to manage loading state
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Prevent the default form submission
+    setLoading(true); // set loading to true when form is submitting
+
+    const formDataToSend = new FormData(); // Create FormData to send via fetch
+    formDataToSend.append("fullName", formData.fullName);
+    formDataToSend.append("email", formData.email);
+    formDataToSend.append("whatsappNumber", formData.whatsappNumber);
+    formDataToSend.append("subject", formData.subject);
+    formDataToSend.append("message", formData.message);
+
+    // Send a POST request to the FormSubmit.php file
+    fetch("/FormSubmit.php", {
+      method: "POST",
+      body: formDataToSend,
+    })
+      .then((response) => response.text()) // Handle as text since PHP usually returns plain text
+      .then((result) => {
+        setLoading(false); // stop loading
+        if (result.toLowerCase().includes("success")) {
+          setFormStatus("success");
+        } else {
+          setFormStatus("error");
+        }
+      })
+      .catch(() => {
+        setLoading(false);
+        setFormStatus("error");
+      });
+  };
+
   return (
     <>
       <div
@@ -66,7 +115,7 @@ const Contact = () => {
 
             {/* Contact Form Section */}
             <div className="contactform bg-white p-6 md:p-8 rounded-lg w-full lg:w-2/3 shadow-lg">
-              <form className="space-y-6" action="./FormSubmit.php" method="post">
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label
@@ -81,6 +130,8 @@ const Contact = () => {
                       id="fullName"
                       className="mt-1 block w-full pl-3 pr-3 py-2 border border-primary rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
                       placeholder="Enter your full name"
+                      value={formData.fullName}
+                      onChange={handleChange}
                     />
                   </div>
                   <div>
@@ -96,6 +147,8 @@ const Contact = () => {
                       id="email"
                       className="mt-1 block w-full pl-3 pr-3 py-2 border border-primary rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
                       placeholder="Enter your email address"
+                      value={formData.email}
+                      onChange={handleChange}
                     />
                   </div>
                 </div>
@@ -114,6 +167,8 @@ const Contact = () => {
                       id="whatsappNumber"
                       className="mt-1 block w-full pl-3 pr-3 py-2 border border-primary rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
                       placeholder="Enter your WhatsApp number"
+                      value={formData.whatsappNumber}
+                      onChange={handleChange}
                     />
                   </div>
                   <div>
@@ -129,6 +184,8 @@ const Contact = () => {
                       id="subject"
                       className="mt-1 block w-full pl-3 pr-3 py-2 border border-primary rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
                       placeholder="Enter the subject"
+                      value={formData.subject}
+                      onChange={handleChange}
                     />
                   </div>
                 </div>
@@ -146,22 +203,37 @@ const Contact = () => {
                     rows={4}
                     className="mt-1 block w-full pl-3 pr-3 py-2 border border-primary rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
                     placeholder="Enter your message"
+                    value={formData.message}
+                    onChange={handleChange}
                   ></textarea>
                 </div>
 
                 <button
                   type="submit"
                   className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+                  disabled={loading}
                 >
-                  Send Message
+                  {loading ? "Sending..." : "Send Message"}
                 </button>
+
+                {/* Display success or error message */}
+                {formStatus === "success" && (
+                  <p className="text-green-600 text-center mt-4">
+                    Your message has been sent successfully!
+                  </p>
+                )}
+                {formStatus === "error" && (
+                  <p className="text-red-600 text-center mt-4">
+                    Something went wrong. Please try again.
+                  </p>
+                )}
               </form>
             </div>
           </div>
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;

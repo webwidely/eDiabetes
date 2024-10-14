@@ -90,7 +90,7 @@ const Hero = () => {
         </div>
 
         {/* Right Image */}
-        <div className="imgdiv w-full md:w-1/2 lg:max-w-4xl lg:w-1/2 order-1 lg:order-2 relative">
+        <div className="imgdiv w-full md:w-1/2 lg:max-w-4xl lg:w-1/2 order-1 lg:order-2 relative mt-28 md:mt-0">
           <div className="relative">
             <GatsbyImage
               image={heroImage}
@@ -113,12 +113,12 @@ const Hero = () => {
 
       {/* Modal for Video Playback */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-75 modal-backdrop" onClick={handleClickOutside}>
+        <div className="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-75 modal-backdrop p-8" onClick={handleClickOutside}>
           <div className="relative w-full max-w-md">
             {/* Close Button */}
             <button
               onClick={() => handleCloseModal()}
-              className="absolute top-0 right-0 m-4 text-white text-4xl z-50"
+              className="absolute top-14 md:top-0 right-0 m-4 text-white text-4xl z-50"
             >
               &times;
             </button>

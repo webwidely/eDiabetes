@@ -15,9 +15,11 @@ const NotFoundPage = () => (
           It seems like the page you're looking for doesn't exist. Let's get you
           back on track.
         </p>
-        <button className="px-8 py-4 rounded-lg bg-gradient-to-tl hover:bg-gradient-to-tr transition-all from-primary to-secondary text-white uppercase mt-8">
-          <Link to="/">Back to Home</Link>
-        </button>
+        <Link to="/">
+          <button className="px-8 py-4 rounded-lg bg-gradient-to-tl hover:bg-gradient-to-tr transition-all from-primary to-secondary text-white uppercase mt-8">
+            Back to Home
+          </button>
+        </Link>
       </div>
     </div>
   </Layout>
