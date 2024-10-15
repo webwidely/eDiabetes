@@ -105,10 +105,10 @@ const Contact = () => {
                 </p>
               </div>
               <div className="flex gap-4 justify-center lg:justify-start">
-            <a href="https://www.instagram.com/diabetesth" target="_blank" rel="noopener noreferrer" className="text-primary bg-white p-2 rounded-full shadow-2xl">
+            <a href="https://www.instagram.com/reel/DBFjkGdvSlG/?igsh=ZzZvdTRidzU2ZzRl" target="_blank" rel="noopener noreferrer" className="text-primary bg-white p-2 rounded-full shadow-2xl">
               <FaInstagram className="text-2xl" />
             </a>
-            <a href="https://www.youtube.com/@internationalavenuemedical826" target="_blank" rel="noopener noreferrer" className="text-primary bg-white p-2 rounded-full shadow-2xl">
+            <a href="https://youtu.be/QNe5r4qwuBY?si=5G0Nhb-olRwndTa4" target="_blank" rel="noopener noreferrer" className="text-primary bg-white p-2 rounded-full shadow-2xl">
               <FaYoutube className="text-2xl" />
             </a>
           </div>
