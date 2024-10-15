@@ -1,11 +1,13 @@
 import React, { useState, useRef } from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import HeroVideo from "../../images/video/herovideo.mp4"
+// Video import commented out for now
+// import HeroVideo from "../../images/video/herovideo.mp4"
 
 const Hero = () => {
   const [isModalOpen, setIsModalOpen] = useState(false); // State to manage modal visibility
-  const videoRef = useRef(null); // Ref to control video playback
+  // Video ref commented out for now
+  // const videoRef = useRef(null); // Ref to control video playback
 
   const data = useStaticQuery(graphql`
     query HeroQuery {
@@ -24,16 +26,18 @@ const Hero = () => {
 
   const heroImage = getImage(data.file)
 
-  const handlePlay = () => {
-    setIsModalOpen(true); // Open modal when play button is clicked
-  }
+  // Function to handle play button click commented out for now
+  // const handlePlay = () => {
+  //   setIsModalOpen(true); // Open modal when play button is clicked
+  // }
 
   const handleCloseModal = () => {
     setIsModalOpen(false); // Close modal
-    if (videoRef.current) {
-      videoRef.current.pause(); // Pause video when modal closes
-      videoRef.current.currentTime = 0; // Reset video to start
-    }
+    // Video control commented out for now
+    // if (videoRef.current) {
+    //   videoRef.current.pause(); // Pause video when modal closes
+    //   videoRef.current.currentTime = 0; // Reset video to start
+    // }
   }
 
   const handleClickOutside = (e) => {
@@ -47,7 +51,8 @@ const Hero = () => {
     <div className="min-h-screen w-full bg-primary/10 relative flex items-center" id="hero">
       {/* SVG Background only visible on larger screens */}
       <div className="hidden lg:block absolute right-0 top-0 z-0">
-        <svg width="100%" height="100vh" viewBox="0 0 1090 1080">
+        {/* SVG element commented out for now */}
+        {/* <svg width="100%" height="100vh" viewBox="0 0 1090 1080">
           <defs>
             <linearGradient
               id="linear-gradient"
@@ -67,7 +72,7 @@ const Hero = () => {
             d="M1090,0h0V1080H0Z"
             fill="url(#linear-gradient)"
           />
-        </svg>
+        </svg> */}
       </div>
 
       <div className="container m-auto z-10 flex flex-col-reverse lg:flex-row flex-wrap justify-between items-center px-4 md:px-8">
@@ -97,16 +102,15 @@ const Hero = () => {
               alt="Hero Image"
               className="w-full h-auto rounded-xl shadow-lg"
             />
-            <button
+            {/* Play button and SVG element commented out for now */}
+            {/* <button
               onClick={handlePlay}
               className="absolute inset-0 flex justify-center items-center bg-black bg-opacity-20 rounded-xl"
             >
-            <svg id="Group_57"  width="78" height="78" viewBox="0 0 512 512">
-  <path id="Path_62" data-name="Path 62" d="M256,0C114.62,0,0,114.62,0,256S114.62,512,256,512,512,397.38,512,256,397.38,0,256,0ZM359.2,274.18,290.81,313.5l-68.58,39.43a20.965,20.965,0,0,1-31.42-18.17V177.24a20.965,20.965,0,0,1,31.42-18.17l68.58,39.43,68.39,39.32A20.974,20.974,0,0,1,359.2,274.18Z" fill="#0f4f52"/>
-</svg>
-
-
-            </button>
+              <svg id="Group_57"  width="78" height="78" viewBox="0 0 512 512">
+                <path id="Path_62" data-name="Path 62" d="M256,0C114.62,0,0,114.62,0,256S114.62,512,256,512,512,397.38,512,256,397.38,0,256,0ZM359.2,274.18,290.81,313.5l-68.58,39.43a20.965,20.965,0,0,1-31.42-18.17V177.24a20.965,20.965,0,0,1,31.42-18.17l68.58,39.43,68.39,39.32A20.974,20.974,0,0,1,359.2,274.18Z" fill="#0f4f52"/>
+              </svg>
+            </button> */}
           </div>
         </div>
       </div>
@@ -122,13 +126,14 @@ const Hero = () => {
             >
               &times;
             </button>
-            <video
+            {/* Video element commented out for now */}
+            {/* <video
               ref={videoRef}
               src={HeroVideo}
               className="w-full h-auto rounded-lg"
               controls
               autoPlay
-            />
+            /> */}
           </div>
         </div>
       )}
