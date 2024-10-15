@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "gatsby";
 import { FaPhone, FaEnvelope } from "react-icons/fa";
+import { FaInstagram, FaYoutube } from 'react-icons/fa'
+
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -102,6 +104,14 @@ const Contact = () => {
                   </a>
                 </p>
               </div>
+              <div className="flex gap-4">
+            <a href="https://www.instagram.com/diabetesth" target="_blank" rel="noopener noreferrer" className="text-primary bg-white p-2 rounded-full shadow-2xl">
+              <FaInstagram className="text-2xl" />
+            </a>
+            <a href="https://www.youtube.com/@internationalavenuemedical826" target="_blank" rel="noopener noreferrer" className="text-primary bg-white p-2 rounded-full shadow-2xl">
+              <FaYoutube className="text-2xl" />
+            </a>
+          </div>
 
               <button className="w-full lg:w-auto px-8 py-4 rounded-lg bg-gradient-to-tl from-primary to-secondary hover:bg-gradient-to-tr transition-all text-white uppercase font-semibold shadow-md hover:shadow-lg">
                 <Link

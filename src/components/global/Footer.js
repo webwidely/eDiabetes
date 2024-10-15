@@ -2,7 +2,6 @@ import React from "react"
 import { Link } from "gatsby"
 import Lenis from "@studio-freight/lenis"
 import { useEffect, useRef } from "react"
-import { FaInstagram, FaYoutube } from 'react-icons/fa'
 
 const Footer = () => {
   const menuItems = [
@@ -76,6 +75,7 @@ const Footer = () => {
               Schedule Your Appointment Today
             </Link>
           </button>
+          
         </div>
 
         {/* Divider */}
@@ -86,14 +86,7 @@ const Footer = () => {
           <p className="text-xs md:text-sm opacity-80 tracking-wide font-body">
             © {new Date().getFullYear()} eDiabetes.com | All Rights Reserved.
           </p>
-          <div className="flex gap-4">
-            <a href="https://www.instagram.com/diabetesth" target="_blank" rel="noopener noreferrer" className="text-white">
-              <FaInstagram className="text-2xl" />
-            </a>
-            <a href="https://www.youtube.com/@internationalavenuemedical826" target="_blank" rel="noopener noreferrer" className="text-white">
-              <FaYoutube className="text-2xl" />
-            </a>
-          </div>
+        
         </div>
       </div>
     </footer>
