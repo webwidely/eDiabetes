@@ -84,7 +84,7 @@ const Footer = () => {
         {/* Copyright Text and Social Media Icons */}
         <div className="flex flex-col items-center gap-4">
           <p className="text-xs md:text-sm opacity-80 tracking-wide font-body">
-            © {new Date().getFullYear()} eDiabetes.com | All Rights Reserved.
+            © {new Date().getFullYear()} eDiabetes.ca | All Rights Reserved.
           </p>
         
         </div>
