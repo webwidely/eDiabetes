@@ -10,6 +10,7 @@ function Seo({ description, title, keywords, children, canonical, image }) {
           description
           author
           siteUrl
+          title  
           keywords
         }
       }
@@ -25,11 +26,11 @@ function Seo({ description, title, keywords, children, canonical, image }) {
   // Fallback image
   const imageUrl = image || `${site.siteMetadata.siteUrl}/images/SiteIcon.png`;
 
-  // Canonical URL (consider using `process.env.GATSBY_CANONICAL_URL` for env variables)
+  // Canonical URL
   const canonicalUrl = canonical || `${site.siteMetadata.siteUrl}${typeof window !== "undefined" ? window.location.pathname : ''}`;
 
-  // Determine the full title
-  const pageTitle = title ? title : defaultTitle;
+  // Use provided title or fallback to default title
+  const pageTitle = title || defaultTitle;
 
   // Use provided keywords or fallback
   const metaKeywords = keywords || site.siteMetadata.keywords || '';
@@ -61,7 +62,7 @@ function Seo({ description, title, keywords, children, canonical, image }) {
       <meta property="og:site_name" content={defaultTitle} />
       <meta property="og:url" content={canonicalUrl} />
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:creator" content={site.siteMetadata?.author || ``} />
+      <meta name="twitter:creator" content={site.siteMetadata?.author || `Abdul Rauf`} />
       <meta name="twitter:title" content={pageTitle} />
       <meta name="twitter:description" content={metaDescription} />
       <meta name="twitter:image" content={imageUrl} />
