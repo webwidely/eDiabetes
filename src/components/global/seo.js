@@ -1,40 +1,43 @@
 import * as React from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import { Helmet } from "react-helmet"; // Importing Helmet to manage document head
+import { Helmet } from "react-helmet";
 
 function Seo({ description, title, keywords, children, canonical, image }) {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            author
-            siteUrl
-            keywords 
-          }
+  const { site } = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          description
+          author
+          siteUrl
+          keywords
         }
       }
-    `
-  );
+    }
+  `);
 
-  // Use provided description or fallback to site metadata description
+  // Use provided description or fallback
   const metaDescription = description || site.siteMetadata.description;
-  const defaultTitle = site.siteMetadata?.title; // Default site title
-  const imageUrl = image || `${site.siteMetadata.siteUrl}/images/SiteIcon.png`; // Fallback image
+
+  // Default site title
+  const defaultTitle = site.siteMetadata?.title || 'eDiabetes';
+
+  // Fallback image
+  const imageUrl = image || `${site.siteMetadata.siteUrl}/images/SiteIcon.png`;
+
+  // Canonical URL (consider using `process.env.GATSBY_CANONICAL_URL` for env variables)
   const canonicalUrl = canonical || `${site.siteMetadata.siteUrl}${typeof window !== "undefined" ? window.location.pathname : ''}`;
 
-  // Determine the full title based on whether a title is provided
-  const pageTitle = title ? title : defaultTitle; // Use page title if available, otherwise default site title
+  // Determine the full title
+  const pageTitle = title ? title : defaultTitle;
 
-  // Use provided keywords or fallback to site metadata keywords
+  // Use provided keywords or fallback
   const metaKeywords = keywords || site.siteMetadata.keywords || '';
 
-  // Define schema markup for structured data
+  // Schema markup
   const schemaMarkup = {
     "@context": "https://schema.org",
-    "@type": "WebSite", // Change to "Article" if this is for a blog post
+    "@type": "WebSite", // Change to "Article" for blog posts
     "name": defaultTitle,
     "url": site.siteMetadata.siteUrl,
     "description": metaDescription,
@@ -47,10 +50,10 @@ function Seo({ description, title, keywords, children, canonical, image }) {
 
   return (
     <Helmet>
-      <title>{pageTitle}</title> {/* Only one title displayed */}
+      <title>{pageTitle}</title>
       <meta name="description" content={metaDescription} />
-      <meta name="keywords" content={metaKeywords} /> {/* Meta keywords */}
-      <meta property="og:title" content={pageTitle} /> {/* Use page title */}
+      <meta name="keywords" content={metaKeywords} />
+      <meta property="og:title" content={pageTitle} />
       <meta property="og:description" content={metaDescription} />
       <meta property="og:type" content="website" />
       <meta property="og:image" content={imageUrl} />
@@ -59,13 +62,12 @@ function Seo({ description, title, keywords, children, canonical, image }) {
       <meta property="og:url" content={canonicalUrl} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:creator" content={site.siteMetadata?.author || ``} />
-      <meta name="twitter:title" content={pageTitle} /> {/* Use page title */}
+      <meta name="twitter:title" content={pageTitle} />
       <meta name="twitter:description" content={metaDescription} />
       <meta name="twitter:image" content={imageUrl} />
       <meta name="twitter:image:alt" content={pageTitle} />
       <link rel="canonical" href={canonicalUrl} />
 
-      {/* Include the schema markup */}
       <script type="application/ld+json">
         {JSON.stringify(schemaMarkup)}
       </script>
