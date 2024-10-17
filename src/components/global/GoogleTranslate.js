@@ -21,7 +21,7 @@ const GoogleTranslate = () => {
     document.body.appendChild(addScript);
     window.googleTranslateElementInit = googleTranslateElementInit;
 
-    // Function to replace "Powered by Google" with "Translate Website"
+    // Function to replace "Powered by Google" with "Google Translate"
     const replaceAttribution = () => {
       const intervalId = setInterval(() => {
         const poweredByGoogle = document.querySelector(".goog-te-gadget span");
@@ -39,8 +39,10 @@ const GoogleTranslate = () => {
     <div
       id="google_translate_element"
       className="flex flex-col justify-center items-center mx-auto p-4 bg-red-600 text-dark rounded-lg shadow-md z-50"
+      aria-label="Google Translate Widget" // Added aria-label for screen readers
     >
-   
+      {/* Optionally, you could add a visually hidden description */}
+      <span className="sr-only">Google Translate Icon</span> {/* Accessible description */}
     </div>
   );
 };

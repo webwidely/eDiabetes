@@ -39,7 +39,7 @@ module.exports = {
       options: {
         userAgent: '*', // Apply to all user agents
         allow: '/', // Allow crawling of the entire site
-        disallow: ['/private', '/secret'], // Disallow specific paths if needed
+        disallow: [], // Disallow specific paths if needed
         // Removed sitemap option since you will add it manually
         host: 'https://ediabetes.ca', // Your domain
       },

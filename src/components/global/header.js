@@ -90,13 +90,13 @@ const Header = ({ siteTitle }) => {
             {logoImage ? (
               <GatsbyImage
                 image={logoImage}
-                alt="Logo"
-                className=" w-[190px]  md:w-[283px] h-auto"
+                alt={`${siteTitle} logo`} // Updated alt text to be more descriptive
+                className="w-[190px] md:w-[283px] h-auto"
               />
             ) : (
               <img
                 src="../../images/logo.png"
-                alt={siteTitle}
+                alt={`${siteTitle} logo`} // Updated alt text for fallback img
                 className="w-[283px] h-auto"
               />
             )}
@@ -107,8 +107,19 @@ const Header = ({ siteTitle }) => {
             className="lg:hidden text-primary text-2xl"
             id="menu-toggle"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"} // Added aria-label
           >
-            {isMenuOpen ? <FaTimes /> : <FaBars />}
+            {isMenuOpen ? (
+              <>
+                <FaTimes aria-hidden="true" /> {/* Icon for closing */}
+                <span className="sr-only">Close menu</span> {/* Screen reader only */}
+              </>
+            ) : (
+              <>
+                <FaBars aria-hidden="true" /> {/* Icon for opening */}
+                <span className="sr-only">Open menu</span> {/* Screen reader only */}
+              </>
+            )}
           </button>
 
           {/* Mobile Menu */}
