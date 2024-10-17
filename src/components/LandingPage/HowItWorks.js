@@ -8,25 +8,25 @@ const HowItWorks = () => {
   const sections = [
     {
       id: 1,
-      icon: <BookanAppointment />,
+      icon: <BookanAppointment alt="Book an Appointment Icon" />,
       heading: "Book an Appointment",
       text: "Schedule online or call us.",
     },
     {
       id: 2,
-      icon: <ConnectwithYourProvider />,
+      icon: <ConnectwithYourProvider alt="Connect with Your Provider Icon" />,
       heading: "Connect with Your Provider",
       text: "Join a virtual appointment through a secure video link.",
     },
     {
       id: 3,
-      icon: <ReceiveYourPersonalizedPlan />,
+      icon: <ReceiveYourPersonalizedPlan alt="Receive Your Personalized Plan Icon" />,
       heading: "Receive Your Personalized Plan",
       text: "Get a customized care plan based on your health goals.",
     },
     {
       id: 4,
-      icon: <OngoingSupport />,
+      icon: <OngoingSupport alt="Ongoing Support Icon" />,
       heading: "Ongoing Support",
       text: "Continue meeting with your provider and accessing telehealth services for ongoing management.",
     },

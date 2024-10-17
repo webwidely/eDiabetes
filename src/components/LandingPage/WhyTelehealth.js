@@ -7,22 +7,22 @@ import AccessToSpecialistsIcon from "../../images/svg/AccessToSpecialistsIcon"
 const WhyTelehealth = () => {
   const sections = [
     {
-      icon: <ConvenienceIcon />,
+      icon: <ConvenienceIcon alt="Convenience Icon" />,
       heading: "Convenience",
       text: "Skip the commute and long waiting times. Connect with your healthcare provider from anywhere.",
     },
     {
-      icon: <PersonalizedCareIcon />,
+      icon: <PersonalizedCareIcon alt="Personalized Care Icon" />,
       heading: "Personalized Care",
       text: "Get tailored advice and treatment based on your unique health needs.",
     },
     {
-      icon: <ContinuityOfCareIcon />,
+      icon: <ContinuityOfCareIcon alt="Continuity of Care Icon" />,
       heading: "Continuity of Care",
       text: "Regular virtual check-ins help you stay on track with health goals and medication.",
     },
     {
-      icon: <AccessToSpecialistsIcon />,
+      icon: <AccessToSpecialistsIcon alt="Access to Specialists Icon" />,
       heading: "Access to Specialists",
       text: "Consult with endocrinologists, dietitians, and diabetes educators without long wait times.",
     },

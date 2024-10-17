@@ -106,10 +106,10 @@ const Contact = () => {
               </div>
               <div className="flex gap-4 justify-center lg:justify-start">
             <a href="https://www.instagram.com/reel/DBFjkGdvSlG/?igsh=ZzZvdTRidzU2ZzRl" target="_blank" rel="noopener noreferrer" className="text-primary bg-white p-2 rounded-full shadow-2xl">
-              <FaInstagram className="text-2xl" />
+              <FaInstagram className="text-2xl" alt="Instagram Icon" />
             </a>
             <a href="https://youtu.be/QNe5r4qwuBY?si=5G0Nhb-olRwndTa4" target="_blank" rel="noopener noreferrer" className="text-primary bg-white p-2 rounded-full shadow-2xl">
-              <FaYoutube className="text-2xl" />
+              <FaYoutube className="text-2xl" alt="YouTube Icon" />
             </a>
           </div>
 

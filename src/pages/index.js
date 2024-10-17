@@ -18,6 +18,10 @@ const IndexPage = () => (
   </Layout>
 )
 
-export const Head = () => <Seo title="Home" />
+export const Head = () => <Seo 
+title="Diabetes Telehealth | Virtual Consultations & Personalized Care"
+description="Control diabetes with virtual care: telehealth consultations, personalized management, and education from home. Start today—WhatsApp us at +1 (403) 903-9110." 
+canonical="https://ediabetes.ca"
+ />
 
 export default IndexPage

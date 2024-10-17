@@ -52,7 +52,7 @@ const Hero = () => {
       {/* SVG Background only visible on larger screens */}
       <div className="hidden lg:block absolute right-0 top-0 z-0">
         {/* SVG element commented out for now */}
-        {/* <svg width="100%" height="100vh" viewBox="0 0 1090 1080">
+        {/* <svg width="100%" height="100vh" viewBox="0 0 1090 1080" alt="Hero SVG Background">
           <defs>
             <linearGradient
               id="linear-gradient"
@@ -99,7 +99,7 @@ const Hero = () => {
           <div className="relative">
             <GatsbyImage
               image={heroImage}
-              alt="Hero Image"
+              alt="Hero Image: A person managing their diabetes at home"
               className="w-full h-auto rounded-xl shadow-lg"
             />
             {/* Play button and SVG element commented out for now */}
@@ -107,7 +107,7 @@ const Hero = () => {
               onClick={handlePlay}
               className="absolute inset-0 flex justify-center items-center bg-black bg-opacity-20 rounded-xl"
             >
-              <svg id="Group_57"  width="78" height="78" viewBox="0 0 512 512">
+              <svg id="Group_57"  width="78" height="78" viewBox="0 0 512 512" alt="Play Icon">
                 <path id="Path_62" data-name="Path 62" d="M256,0C114.62,0,0,114.62,0,256S114.62,512,256,512,512,397.38,512,256,397.38,0,256,0ZM359.2,274.18,290.81,313.5l-68.58,39.43a20.965,20.965,0,0,1-31.42-18.17V177.24a20.965,20.965,0,0,1,31.42-18.17l68.58,39.43,68.39,39.32A20.974,20.974,0,0,1,359.2,274.18Z" fill="#0f4f52"/>
               </svg>
             </button> */}
@@ -133,6 +133,7 @@ const Hero = () => {
               className="w-full h-auto rounded-lg"
               controls
               autoPlay
+              alt="Hero Video"
             /> */}
           </div>
         </div>

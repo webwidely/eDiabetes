@@ -44,36 +44,42 @@ const OurTelehealthDiabetesServices = () => {
   const services = [
     {
       image: getImage(data.s1),
+      alt: "Virtual Consultations Image",
       title: "Virtual Consultations",
       description:
         "Connect with healthcare professionals from the comfort of your home for diabetes management.",
     },
     {
       image: getImage(data.s2),
+      alt: "Diabetes Education Image",
       title: "Diabetes Education",
       description:
         "Receive personalized education on managing your diabetes, including diet and exercise.",
     },
     {
       image: getImage(data.s3),
+      alt: "Continuous Glucose Monitoring Image",
       title: "Continuous Glucose Monitoring",
       description:
         "Get access to tools and insights for real-time blood glucose monitoring remotely.",
     },
     {
       image: getImage(data.s4),
+      alt: "Medication Management Image",
       title: "Medication Management",
       description:
         "Work with specialists to ensure your medication plan is optimized for your needs.",
     },
     {
       image: getImage(data.s5),
+      alt: "Dietary Counseling Image",
       title: "Dietary Counseling",
       description:
         "Consult with dietitians to develop a meal plan that supports your diabetes management.",
     },
     {
       image: getImage(data.s6),
+      alt: "Exercise Guidance Image",
       title: "Exercise Guidance",
       description:
         "Receive exercise recommendations tailored to your fitness level and diabetes goals.",
@@ -106,7 +112,7 @@ const OurTelehealthDiabetesServices = () => {
                 {service.image && (
                   <GatsbyImage
                     image={service.image}
-                    alt={service.title}
+                    alt={service.alt}
                     className="h-full w-full bg-cover bg-center absolute top-0 right-0 bottom-0 left-0"
                   />
                 )}
