@@ -5,8 +5,8 @@
  */
 
 // You can delete this file if you're not using it
-import "./src/styles/global.css"
-import Lenis from "@studio-freight/lenis"
+import "./src/styles/global.css";
+import Lenis from "@studio-freight/lenis";
 
 let lenis;
 
@@ -25,7 +25,7 @@ export const onInitialClientRender = () => {
     }
     requestAnimationFrame(raf);
   }
-  
+
   requestAnimationFrame(raf);
 
   // Adding Google Tag Manager script
@@ -37,10 +37,32 @@ export const onInitialClientRender = () => {
   // Adding Google Tag Manager configuration
   window.dataLayer = window.dataLayer || [];
   function gtag() { window.dataLayer.push(arguments); }
-  
+
   // Ensure gtag is called only after script is loaded
   script.onload = () => {
     gtag('js', new Date());
     gtag('config', 'G-M9TG3HJC9V');
   };
+
+  // Function to add alt tags to images and titles to SVGs
+  const addAltTags = () => {
+    // Select all images without an alt attribute
+    const imagesWithoutAlt = document.querySelectorAll('img:not([alt])');
+    imagesWithoutAlt.forEach((img, index) => {
+      // Set a dynamic alt tag (you can customize this logic)
+      img.setAttribute('alt', `Image ${index + 1}`);
+    });
+
+    // Select all inline SVGs without a title
+    const svgsWithoutTitle = document.querySelectorAll('svg:not(:has(title))');
+    svgsWithoutTitle.forEach((svg, index) => {
+      // Create a title element and set its text
+      const titleElement = document.createElement('title');
+      titleElement.textContent = `SVG Icon ${index + 1}`;
+      svg.prepend(titleElement); // Add title as the first child of the SVG
+    });
+  };
+
+  // Run the function to add alt tags and titles
+  addAltTags();
 };

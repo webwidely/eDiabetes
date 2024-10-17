@@ -1,6 +1,5 @@
 import * as React from "react"
 import { Link } from "gatsby"
-
 import Layout from "../components/global/layout"
 import Seo from "../components/global/seo"
 
@@ -15,6 +14,7 @@ const NotFoundPage = () => (
           It seems like the page you're looking for doesn't exist. Let's get you
           back on track.
         </p>
+        {/* Ensure that this Link component is functioning correctly */}
         <Link to="/">
           <button className="px-8 py-4 rounded-lg bg-gradient-to-tl hover:bg-gradient-to-tr transition-all from-primary to-secondary text-white uppercase mt-8">
             Back to Home
@@ -25,6 +25,7 @@ const NotFoundPage = () => (
   </Layout>
 )
 
+// Ensure the Seo component handles all cases, including undefined title
 export const Head = () => <Seo title="Oops! Page Not Found" />
 
 export default NotFoundPage
