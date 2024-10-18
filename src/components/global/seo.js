@@ -21,7 +21,7 @@ function Seo({ description, title, keywords, children, canonical, image }) {
   const metaDescription = description || site.siteMetadata.description;
 
   // Default site title
-  const defaultTitle = site.siteMetadata?.title || 'eDiabetes';
+  const defaultTitle = site.siteMetadata?.title || 'Diabetes Telehealth | Virtual Consultations & Personalized Care';
 
   // Fallback image
   const imageUrl = image || `${site.siteMetadata.siteUrl}/images/SiteIcon.png`;

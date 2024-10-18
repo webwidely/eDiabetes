@@ -9,32 +9,32 @@ const OurTelehealthDiabetesServices = () => {
     query {
       s1: file(relativePath: { eq: "services/s1.jpg" }) {
         childImageSharp {
-          gatsbyImageData(width: 300)
+          gatsbyImageData(width: 300, layout: FIXED, placeholder: NONE) 
         }
       }
       s2: file(relativePath: { eq: "services/s2.jpg" }) {
         childImageSharp {
-          gatsbyImageData(width: 300)
+          gatsbyImageData(width: 300, layout: FIXED, placeholder: NONE) 
         }
       }
       s3: file(relativePath: { eq: "services/s3.jpg" }) {
         childImageSharp {
-          gatsbyImageData(width: 300)
+          gatsbyImageData(width: 300, layout: FIXED, placeholder: NONE) 
         }
       }
       s4: file(relativePath: { eq: "services/s4.jpg" }) {
         childImageSharp {
-          gatsbyImageData(width: 300)
+          gatsbyImageData(width: 300, layout: FIXED, placeholder: NONE) 
         }
       }
       s5: file(relativePath: { eq: "services/s5.jpg" }) {
         childImageSharp {
-          gatsbyImageData(width: 300)
+          gatsbyImageData(width: 300, layout: FIXED, placeholder: NONE) 
         }
       }
       s6: file(relativePath: { eq: "services/s6.jpg" }) {
         childImageSharp {
-          gatsbyImageData(width: 300)
+          gatsbyImageData(width: 300, layout: FIXED, placeholder: NONE) 
         }
       }
     }
@@ -98,8 +98,6 @@ const OurTelehealthDiabetesServices = () => {
         <div className="overlay bg-primary/85 absolute w-full h-full z-10"></div>{" "}
         {/* Ensure this has a z-index lower than the heading */}
         <div className="py-[5%] relative z-20">
-          {" "}
-          {/* Add z-20 to bring it above the overlay */}
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold max-w-lg text-white leading-snug m-auto text-center mb-12 relative z-20">
             Our Telehealth Diabetes Services
           </h2>
@@ -109,13 +107,14 @@ const OurTelehealthDiabetesServices = () => {
                 key={index}
                 className="flex flex-col min-h-96 gap-8 relative rounded-lg overflow-hidden"
               >
-                {service.image && (
+                {service.image ? (
                   <GatsbyImage
                     image={service.image}
-                    alt={service.alt}
+                    alt={service.alt || service.title} // Use service title as fallback
                     className="h-full w-full bg-cover bg-center absolute top-0 right-0 bottom-0 left-0"
                   />
-                )}
+                ) : null} {/* Don't render anything if there is no image */}
+                
                 <div className="overlay bg-gradient-to-b from-transparent to-primary absolute w-full h-full z-0"></div>
 
                 <div className="absolute bottom-4 text-center p-4 text-white">
