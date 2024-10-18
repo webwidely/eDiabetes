@@ -10,7 +10,6 @@ module.exports = {
     keywords: `diabetes management, telehealth, virtual consultations, diabetes education, personalized care, diabetes monitoring, remote healthcare, diabetes support, health technology, online healthcare, diabetes treatment, chronic disease management, patient care, wellness programs, diabetes resources, nutrition for diabetes, blood sugar control, diabetes prevention, healthcare technology, telemedicine, digital health, Diabetic Foot assessment ,  Diabetic foot care, Diabetic vaccinations`,
   },
   plugins: [
-    `gatsby-plugin-sitemap`,
     `gatsby-plugin-postcss`,
     'gatsby-plugin-react-helmet',
     `gatsby-plugin-image`,
