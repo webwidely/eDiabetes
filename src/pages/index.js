@@ -27,7 +27,7 @@ export const Head = () => (
     />
     <meta
       name="keywords"
-      content="diabetes management, telehealth, virtual consultations, diabetes education, personalized care, diabetes monitoring, remote healthcare, diabetes support, health technology, online healthcare, diabetes treatment, chronic disease management, patient care, wellness programs, diabetes resources, nutrition for diabetes, blood sugar control, diabetes prevention, healthcare technology, telemedicine, digital health, Diabetic Foot assessment, Diabetic foot care, Diabetic vaccinations"
+      content="diabetes management, telehealth, virtual consultations, diabetes education, personalized care, diabetes monitoring, diabetes support, telemedicine, digital health, diabetes treatment, blood sugar control, diabetes prevention, diabetic foot assessment, diabetic foot care, diabetic vaccinations, eConsultation, eConsult, eDiabetes"
     />
     <link rel="canonical" href="https://ediabetes.ca" />
 
